@@ -1,0 +1,14 @@
+/* Wrapper שמרכז את כל האפליקציה */
+.app-container {
+  display: flex;
+  flex-direction: column;  /* קומפוננטות מלמעלה למטה */
+  align-items: center;     /* מרכז אופקית */
+  width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* מוסיף רווח בין קומפוננטות */
+.app-container > * {
+  margin-bottom: 20px;
+}
