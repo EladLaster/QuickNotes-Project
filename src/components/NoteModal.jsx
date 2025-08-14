@@ -9,7 +9,10 @@ export function NoteModal({
   setModalTitle,
   modalText,
   setModalText,
-  handleUpdate
+  modalCategory,
+  setModalCategory,
+  handleUpdate,
+  categories
 }) {
   
   
@@ -36,6 +39,13 @@ export function NoteModal({
             onChange={(e) => setModalText(e.target.value)}
           />
           <small>{selectedNote.date}</small>
+          <label>Category:</label>
+          <select value={modalCategory} onChange={(e) => setModalCategory(e.target.value)}>
+            {Object.keys(categories).map((cat) => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
+
           <button onClick={handleUpdate}>Update</button>
         </div>
       )}

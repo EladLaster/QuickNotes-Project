@@ -1,8 +1,10 @@
 import "./NotesGridCard.css"
 
-export function NoteCard({ note, index, openModal, deleteMe }) {
+export function NoteCard({ note, index, openModal, deleteMe, categories  }) {
   return (
-    <div className="note-card" onClick={() => openModal(note, index)}>
+    <div className="note-card" 
+    style={{ backgroundColor: categories[note.category] }}
+    onClick={() => openModal(note, index)}>
       <button
         className="delete-button"
         onClick={(e) => {

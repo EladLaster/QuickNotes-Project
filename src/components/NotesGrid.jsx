@@ -1,16 +1,16 @@
 import { NoteCard } from "./NoteCard";
-import "./NotesGridCard.css"
 
-export function NotesGrid({ notes, openModal, deleteMe }) {
+export function NotesGrid({ notes, openModal, deleteMe, categories }) {
   return (
     <div className="notes-grid">
       {notes.map((note, index) => (
         <NoteCard
-          key={index}
+          key={note.id || index}
           note={note}
           index={index}
           openModal={openModal}
           deleteMe={deleteMe}
+          categories={categories}
         />
       ))}
     </div>

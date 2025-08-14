@@ -1,6 +1,6 @@
 import "./NoteForm.css"
 
-export function NoteForm({ titleText, setTitleText, text, setText, send, textAreaRef }) {
+export function NoteForm({ titleText, setTitleText, text, setText,category,setCategory, send, textAreaRef,categoryRef,categories }) {
 
     
   const handleTitleKeyDown = (e) => {
@@ -9,13 +9,13 @@ export function NoteForm({ titleText, setTitleText, text, setText, send, textAre
       textAreaRef.current.focus();
     }
   };
-  
+
   const handleTextKeyDown = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      send();
-    }
-  };
+  if (e.key === "Enter") {
+    e.preventDefault();
+    categoryRef.current.focus();
+  }
+};
 
   return (
     <div className="container">
@@ -35,6 +35,16 @@ export function NoteForm({ titleText, setTitleText, text, setText, send, textAre
         onKeyDown={handleTextKeyDown}
         ref={textAreaRef}
       />
+      <label>Category:</label>
+      <select value={category}
+       onChange={(e) => setCategory(e.target.value)}
+       ref={categoryRef} 
+       >
+        {Object.keys(categories).map((cat) => (
+          <option key={cat} value={cat}>{cat}</option>
+        ))}
+      </select>
+
       <br />
       <button className="send-button" onClick={send}>
         Add
